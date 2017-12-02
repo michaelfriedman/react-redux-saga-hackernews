@@ -7,11 +7,14 @@ import { getReadableStories } from "./selectors/story";
 import { STORY_ARCHIVE } from "./constants/actionTypes";
 import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(
-  <App
-    stories={getReadableStories(store.getState())}
-    onArchive={id => store.dispatch({ type: STORY_ARCHIVE, id })}
-  />,
-  document.getElementById("root"),
-);
+const render = () =>
+  ReactDOM.render(
+    <App
+      stories={getReadableStories(store.getState())}
+      onArchive={id => store.dispatch({ type: STORY_ARCHIVE, id })}
+    />,
+    document.getElementById("root"),
+  );
+store.subscribe(render);
+render();
 registerServiceWorker();
