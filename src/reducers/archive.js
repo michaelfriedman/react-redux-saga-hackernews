@@ -1,4 +1,4 @@
-import { STORY_ARCHIVE } from "../constants/actionTypes";
+import { STORY_ARCHIVE } from '../constants/actionTypes';
 // import applyArchiveStory from '../actions/archive';
 
 const INITIAL_STATE = [];

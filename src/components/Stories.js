@@ -1,28 +1,28 @@
-import React from "react";
-import { connect } from "react-redux";
-import { getReadableStories } from "../selectors/story";
-import "./Stories.css";
-import Story from "./Story";
+import React from 'react';
+import { connect } from 'react-redux';
+import { getReadableStories, getFetchError } from '../selectors/story';
+import './Stories.css';
+import Story from './Story';
 
 const COLUMNS = {
   title: {
-    label: "Title",
-    width: "40%",
+    label: 'Title',
+    width: '40%',
   },
   author: {
-    label: "Author",
-    width: "30%",
+    label: 'Author',
+    width: '30%',
   },
   comments: {
-    label: "Comments",
-    width: "10%",
+    label: 'Comments',
+    width: '10%',
   },
   points: {
-    label: "Points",
-    width: "10%",
+    label: 'Points',
+    width: '10%',
   },
   archive: {
-    width: "10%",
+    width: '10%',
   },
 };
 
@@ -36,8 +36,11 @@ const StoriesHeader = ({ columns }) => (
   </div>
 );
 
-const Stories = ({ stories }) => (
+const Stories = ({ stories, error }) => (
   <div className="stories">
+    {error && (
+      <p className="error">An error occured while fetching search results.</p>
+    )}
     <StoriesHeader columns={COLUMNS} />
     {(stories || []).map(story => (
       <Story key={story.objectID} story={story} columns={COLUMNS} />
@@ -47,6 +50,7 @@ const Stories = ({ stories }) => (
 
 const mapStateToProps = state => ({
   stories: getReadableStories(state),
+  error: getFetchError(state),
 });
 
 export default connect(mapStateToProps)(Stories);

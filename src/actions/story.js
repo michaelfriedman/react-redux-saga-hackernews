@@ -1,4 +1,8 @@
-import { STORIES_ADD, STORIES_FETCH } from "../constants/actionTypes";
+import {
+  STORIES_ADD,
+  STORIES_FETCH,
+  STORIES_FETCH_ERROR,
+} from '../constants/actionTypes';
 
 const doFetchStories = query => ({
   type: STORIES_FETCH,
@@ -10,4 +14,9 @@ const doAddStories = stories => ({
   stories,
 });
 
-export { doFetchStories, doAddStories };
+const doFetchErrorStories = error => ({
+  type: STORIES_FETCH_ERROR,
+  error,
+});
+
+export { doFetchStories, doAddStories, doFetchErrorStories };
