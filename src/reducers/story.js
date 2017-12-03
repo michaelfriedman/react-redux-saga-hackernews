@@ -16,8 +16,7 @@ const applyFetchErrorStories = (state, action) => ({
 });
 
 const storyReducer = (state = INITIAL_STATE, action) => {
-  const { type } = action;
-  switch (type) {
+  switch (action.type) {
     case STORIES_ADD: {
       return applyAddStories(state, action);
     }
