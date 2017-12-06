@@ -39,7 +39,7 @@ const StoriesHeader = ({ columns }) => (
 const Stories = ({ stories, error }) => (
   <div className="stories">
     {error && (
-      <p className="error">An error occured while fetching search results.</p>
+      <p className="error">{`An error occured while fetching search results.`}</p>
     )}
     <StoriesHeader columns={COLUMNS} />
     {(stories || []).map(story => (
